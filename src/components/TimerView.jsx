@@ -11,30 +11,36 @@ const useStyles = makeStyles((theme) => ({
 
 const TimerView = () => {
   const [startTime, setStartTime] = useState(0);
+  //後々inputから取得できるようにする
   const[time, setTime] = useState(25);
+  const[timeLeft, setTimeLeft] = useState({restMin: String(time).padStart(2, '0'),
+  restSec:'00'});
+  const[isRunning, setIsRunning] = useState(false);
+  const[elapsedTime, setElapsedTime] = useState(0);
+  const[timerState, setTimerState] = useState('work');
 
   const classes = useStyles();
 
-  //カウントダウンはstateが変わる
-  //setTimeを1000秒毎に呼び出す？
-  const handleCalculateTimeLeft = () => {
+  const handleStartTime = () => {
     setStartTime(Date.now());
+    setIsRunning(!isRunning);
   } 
-  //<span>タグuseEffect：非同期処理をコールバック関数を　秒を
-  //副作用がある処理がuseEffect
-  //useEffect
-  //フロントエンドの技術に必要なものを洗い出す 
-  //現在地の確認
-  //必要な勉強を。。。
 
-  // ①クリックでhandleCountStartを呼び出す
-  //②handleCountStart⇒startTimeセット、countDownの呼び出し？
-  //③useEffectとどのタイミングで連携させるのか？
+  const handleStopTime = () => {
+    setIsRunning(!isRunning);
+    setElapsedTime(e => e + Date.now() - startTime);
+  }
 
-  const calculateTimeLeft = () => {
-    let elapsedTime = 0;
+  const handleResetTime = () => {
+    //initialStateを作成すれば簡潔に書けそう
+    setTimeLeft({restMin: String(time).padStart(2, '0'),
+    restSec:'00'});
+    setElapsedTime(0);
+  }
+
+  const calculateRemainigTime = () => {
     let timeLeft = {};
-    const remainigTime = (25 * 60 *1000) - elapsedTime - (Date.now() - startTime); 
+    const remainigTime = (time * 60 *1000) - elapsedTime - (Date.now() - startTime); 
     if( remainigTime > 0 ) {
       timeLeft = {
         restMin: String(Math.floor((remainigTime / 1000 / 60) % 60)).padStart(2, '0'),
@@ -44,22 +50,33 @@ const TimerView = () => {
     return timeLeft;
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  //1つのuseEffectでcycleをif分岐で構築
+  //ただ、ネストが深くなるので恐らく最終的にはuseReducerか？
 
+  //
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearTimeout(timer);
-  });
+    let timeoutId = null;
+    if(isRunning) {
+      timeoutId = setTimeout(() => {
+        setTimeLeft(calculateRemainigTime());
+      }, 1000);
+    } else if (!isRunning) {
+      clearTimeout(timeoutId)
+    }
+    return () => clearTimeout(timeoutId);
+  },[isRunning, timeLeft]);
+
 
   console.log(timeLeft);
+  console.log(isRunning);
 
   return (
     <>
       <div className="timerView_main">{timeLeft.restMin}:{timeLeft.restSec}</div>
       <div className={classes.root}>
-       <Button variant="contained" onClick={handleCalculateTimeLeft}>START</Button>
+       <Button variant="contained" onClick={handleStartTime}>START</Button>
+       <Button variant="contained" onClick={handleStopTime}>STOP</Button>
+       <Button variant="contained" onClick={handleResetTime}>RESET</Button>
       </div>
     </>
   );
