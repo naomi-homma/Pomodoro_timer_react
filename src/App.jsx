@@ -1,6 +1,6 @@
 import React from 'react';
-import '../App.css';
-import TimerView from './TimerView';
+import './App.css';
+import CountdownContainer from './containers/Countdown';
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
       <header className="App-header">
         <p>Pomodoro Timer</p>
       </header>
-      <TimerView />
+      <CountdownContainer />
     </div>
   );
 }
