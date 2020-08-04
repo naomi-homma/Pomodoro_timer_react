@@ -3,8 +3,8 @@
   export const secToMMSS = (sec) => {
     let remainigTime = {};
     remainigTime = {
-      restMin: String(Math.floor((sec / 1000 / 60) % 60)).padStart(2, '0'),
-      restSec: String(Math.floor((sec / 1000) % 60)).padStart(2, '0')
+      restMin: String(Math.floor((sec / 60) % 60)).padStart(2, '0'),
+      restSec: String(Math.floor((sec) % 60)).padStart(2, '0')
     };
     return `${remainigTime.restMin}:${remainigTime.restSec}`
   };

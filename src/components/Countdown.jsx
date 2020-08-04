@@ -3,6 +3,7 @@ import React from 'react';
 import {secToMMSS} from '../lib/time';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import useCountdown from '../containers/Countdown';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,8 +12,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CowntdownComponent = ({leftSec, handleStart, handleStop, handleReset,active}) => {
+
+const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, active}) => {
   const classes = useStyles();
+  // console.log(leftSec);
+  // console.log(handleStart);
   return (
     <>
       <div className="timerView_main">{secToMMSS(leftSec)}</div>
@@ -25,4 +29,4 @@ const CowntdownComponent = ({leftSec, handleStart, handleStop, handleReset,activ
   );
 }
 
-export default CowntdownComponent
+export default CountdownComponent
