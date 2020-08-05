@@ -33,14 +33,12 @@ const useCountdown = (limit) => {
   }
 
   const handleStart = () => {
-    console.log('start click!')
     setActive(true);
   };
 
   const handleStop = () => {
     setActive(false);
     clearTimeout(timerObj);
-    console.log('stop click')
   };
 
   const handleReset = () => {
