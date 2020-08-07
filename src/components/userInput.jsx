@@ -13,16 +13,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
-const UserInputComponent = ({handleInputWorkTime, inputWorkTime}) => {
+const UserInputComponent = ({
+  handleInputWorkTime, inputWorkTime,
+  handleInputBreakTime, inputBreakTime,
+  handleInputLongBreakTime, inputLongBreakTime,
+  handleInputCycleCount, inputCycleCount,
+}) => {
   const classes = useStyles();
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" onChange={handleInputWorkTime} value={inputWorkTime} label="作業時間" />
-      <TextField id="standard-basic" label="小休憩時間" />
-      <TextField id="standard-basic" label="長休憩時間" />
-      <TextField id="standard-basic" label="長休憩までの作業回数" />
+      <TextField id="standard-basic" 
+        onChange={handleInputWorkTime} 
+        value={inputWorkTime} 
+        label="作業時間"
+      />
+      <TextField id="standard-basic"
+        onChange={handleInputBreakTime} 
+        value={inputBreakTime}
+        label="小休憩時間"
+      />
+      <TextField id="standard-basic"
+        onChange={handleInputLongBreakTime} 
+        value={inputLongBreakTime}
+        label="長休憩時間"
+      />
+      <TextField id="standard-basic"
+        onChange={handleInputCycleCount} 
+        value={inputCycleCount}
+        label="長休憩までの作業回数"
+      />
       
       <Button variant="contained">OK</Button>
     </form>
