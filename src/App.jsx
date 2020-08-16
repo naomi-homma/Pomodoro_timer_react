@@ -17,9 +17,12 @@ const App = () => {
     <div className="App">
       <GlobalStyle />
       <Header />
+      <div className="module-spacer" />
       <CountdownContainer />
-      <UserInputContainer />
+      <div className="module-spacer" />
       <InputTimeDesplay />
+      <div className="module-spacer" />
+      <UserInputContainer />
     </div>
   );
 }

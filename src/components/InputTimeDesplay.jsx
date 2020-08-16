@@ -18,23 +18,29 @@ const StyledTableCell = withStyles((theme) => ({
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
     borderRight:'2px solid #ccc',
+    lineHeight: '1rem'
   },
   body: {
     fontSize: 14,
     borderRight:'2px solid #aaa',
+    lineHeight: '1rem'
   },
+  root: {
+    padding: '15px',
+  }
+
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
-    },
+    }
   },
 }))(TableRow);
 
 const StyledTableContainer = styled(TableContainer)`
-    max-width: 400px;
+    max-width: 350px;
     margin: 0 auto;
 `;
 
@@ -51,7 +57,8 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    maxWidth: 400,
+    maxWidth: 350,
+    margin: '0 auto',
   },
 });
 
