@@ -44,8 +44,8 @@ const StyledTableContainer = styled(TableContainer)`
     margin: 0 auto;
 `;
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, times_cycles) {
+  return { name, times_cycles };
 }
 
 const rows = [
@@ -79,7 +79,7 @@ const InputTimeDesplay = () => {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
+              <StyledTableCell align="right">{row.times_cycles}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
