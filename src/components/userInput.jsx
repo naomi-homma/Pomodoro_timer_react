@@ -42,6 +42,7 @@ const UserInputComponent = ({
   handleInputBreakTime, inputBreakTime,
   handleInputLongBreakTime, inputLongBreakTime,
   handleInputCycleCount, inputCycleCount,
+  inputValueSet
 }) => {
   const classes = useStyles();
   return (
@@ -68,7 +69,9 @@ const UserInputComponent = ({
           label="長休憩までの作業回数"
         />
       </StyledInputField>
-      <StyledButton variant="contained">OK</StyledButton>
+      <StyledButton variant="contained"
+        onSubmit={inputValueSet}
+      >OK</StyledButton>
     </form>
   );
 };

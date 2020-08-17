@@ -34,8 +34,8 @@ const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, acti
       <div className="module-spacer" />
       <div>
        <StyledButton variant="contained" onClick={handleStart} disabled={active}>START</StyledButton>
-       <StyledButton variant="contained" onClick={handleStop} disabled={active}>STOP</StyledButton>
-       <StyledButton variant="contained" onClick={handleReset} disabled={active}>RESET</StyledButton>
+       <StyledButton variant="contained" onClick={handleStop} disabled={!active}>STOP</StyledButton>
+       <StyledButton variant="contained" onClick={handleReset} disabled={!active}>RESET</StyledButton>
       </div>
     </>
   );

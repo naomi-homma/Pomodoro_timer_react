@@ -9,6 +9,8 @@ const UserInputContainer = () => {
   const[inputLongBreakTime, setInputLongBreakTime] = useState(20);
   const[inputCycleCount, setInputCycleCount] = useState(4);
 
+
+
   const handleInputWorkTime = (e) => {
     setInputWorkTime(e.target.value);
     console.log(e.target.value);
@@ -27,6 +29,10 @@ const UserInputContainer = () => {
   const handleInputCycleCount = (e) => {
     setInputCycleCount(e.target.value);
     console.log(e.target.value);
+  }
+
+  const inputValueSet = (e) => {
+    
   }
 
 
