@@ -70,7 +70,8 @@ const UserInputComponent = ({
         />
       </StyledInputField>
       <StyledButton variant="contained"
-        onSubmit={inputValueSet}
+        type="submit"
+        onClick={inputValueSet}
       >OK</StyledButton>
     </form>
   );

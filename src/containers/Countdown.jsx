@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
 
-const useCountdown = (limit) => {
-  const[workTime, setWorkTime] = useState(25);
-  const[breakTime, setBreakTime] = useState(0.3);
-  const[longBreakTime, setLongBreakTime] = useState(20);
+const useCountdown = (props) => {
+  //各時間の値はAppで管理する
+  // const[workTime, setWorkTime] = useState(25);
+  // const[breakTime, setBreakTime] = useState(0.3);
+  // const[longBreakTime, setLongBreakTime] = useState(20);
   const[timerState, setTimerState] = useState('work');
   const[cycleCount, setCycleCount] = useState(1);
   const[active, setActive] = useState(false);
