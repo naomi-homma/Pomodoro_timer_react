@@ -9,21 +9,16 @@ const UserInputContainer = () => {
   const[inputLongBreakTime, setInputLongBreakTime] = useState(20);
   const[inputCycleCount, setInputCycleCount] = useState(4);
 
-
-
   const handleInputWorkTime = (e) => {
     setInputWorkTime(e.target.value);
-    console.log(e.target.value);
   }
 
   const handleInputBreakTime = (e) => {
     setInputBreakTime(e.target.value);
-    console.log(e.target.value);
   }
 
   const handleInputLongBreakTime = (e) => {
     setInputLongBreakTime(e.target.value);
-    console.log(e.target.value);
   }
   
   const handleInputCycleCount = (e) => {
@@ -31,10 +26,12 @@ const UserInputContainer = () => {
     console.log(e.target.value);
   }
 
+  //クリックしたら値がセットされる...ようにしたい
+  //
   const inputValueSet = (e) => {
-    
-  }
+    e.preventDefault();
 
+  }
 
   return (
     <>
@@ -47,6 +44,7 @@ const UserInputContainer = () => {
         inputLongBreakTime={inputLongBreakTime}
         handleInputCycleCount={handleInputCycleCount}
         inputCycleCount={inputCycleCount}
+        inputValueSet={inputValueSet}
       />
     </>
   );

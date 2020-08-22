@@ -88,5 +88,4 @@ const InputTimeDesplay = () => {
   );
 }
 
-
 export default InputTimeDesplay;
