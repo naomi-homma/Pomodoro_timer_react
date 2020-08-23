@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState}from 'react';
 import './App.css';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset-advanced';
@@ -16,17 +16,25 @@ const App = () => {
   const[workTime, setWorkTime] = useState(25);
   const[breakTime, setBreakTime] = useState(0.3);
   const[longBreakTime, setLongBreakTime] = useState(20);
+
+  const inputValueSet = (inputWorkTime) => {
+    setWorkTime(inputWorkTime);
+  }
   
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
       <div className="module-spacer" />
-      <CountdownContainer />
+      <CountdownContainer
+        workTime={workTime}
+      />
       <div className="module-spacer" />
       <InputTimeDesplay />
       <div className="module-spacer" />
-      <UserInputContainer />
+      <UserInputContainer 
+        inputValueSet={inputValueSet}
+      />
     </div>
   );
 }

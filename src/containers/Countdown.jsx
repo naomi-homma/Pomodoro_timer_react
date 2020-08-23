@@ -6,12 +6,12 @@ import CountdownComponent from '../components/Countdown';
 const useCountdown = (props) => {
   //各時間の値はAppで管理する
   // const[workTime, setWorkTime] = useState(25);
-  // const[breakTime, setBreakTime] = useState(0.3);
-  // const[longBreakTime, setLongBreakTime] = useState(20);
+  const[breakTime, setBreakTime] = useState(0.3);
+  const[longBreakTime, setLongBreakTime] = useState(20);
   const[timerState, setTimerState] = useState('work');
   const[cycleCount, setCycleCount] = useState(1);
   const[active, setActive] = useState(false);
-  let[leftSec, setLeftSec] = useState(workTime*60);
+  let[leftSec, setLeftSec] = useState(props.workTime*60);
   let[timerObj, setTimerObj] = useState('');
 
   const handleSwitch = () => {
@@ -26,7 +26,7 @@ const useCountdown = (props) => {
       setTimerState('break');
       console.log('handleSwitchのwork');
     } else if ( timerState === 'break' ) {
-      setLeftSec(workTime*60);
+      setLeftSec(props.workTime*60);
       setTimerState('work');
       setCycleCount(c => c + 1);
       console.log(cycleCount); 
@@ -46,7 +46,7 @@ const useCountdown = (props) => {
 
   const handleReset = () => {
     switch (timerState) {
-      case "work": setLeftSec(workTime);
+      case "work": setLeftSec(props.workTime);
         break;
       case "break": setLeftSec(breakTime);
         break;
@@ -73,7 +73,7 @@ const useCountdown = (props) => {
     return () => clearTimeout(timerObj);
   },[active, leftSec])
 
-  return[[workTime, leftSec, active], [handleStart, handleStop, handleReset]];
+  return[[props.workTime, leftSec, active], [handleStart, handleStop, handleReset]];
 }
 
 
