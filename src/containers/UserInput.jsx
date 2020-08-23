@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import UserInputComponent from '../components/userInput';
 
 
-const UserInputContainer = () => {
+const UserInputContainer = (props) => {
   const[inputWorkTime, setInputWorkTime] = useState(25);
   const[inputBreakTime, setInputBreakTime] = useState(5);
   const[inputLongBreakTime, setInputLongBreakTime] = useState(20);
@@ -28,9 +28,9 @@ const UserInputContainer = () => {
 
   //クリックしたら値がセットされる...ようにしたい
   //
-  const inputValueSet = (e) => {
+  const callInputValueSet = (e) => {
     e.preventDefault();
-
+    props.inputValueSet(inputWorkTime);
   }
 
   return (
@@ -44,7 +44,7 @@ const UserInputContainer = () => {
         inputLongBreakTime={inputLongBreakTime}
         handleInputCycleCount={handleInputCycleCount}
         inputCycleCount={inputCycleCount}
-        inputValueSet={inputValueSet}
+        callInputValueSet={callInputValueSet}
       />
     </>
   );
