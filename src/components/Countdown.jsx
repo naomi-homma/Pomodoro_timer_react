@@ -23,8 +23,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-
-const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, active}) => {
+const CountdownComponent = ({workTime, leftSec, handleStart, handleStop, handleReset, active}) => {
   // const classes = useStyles();
   // console.log(leftSec);
   // console.log(handleStart);

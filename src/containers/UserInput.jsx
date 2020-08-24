@@ -30,8 +30,10 @@ const UserInputContainer = (props) => {
   //
   const callInputValueSet = (e) => {
     e.preventDefault();
-    props.inputValueSet(inputWorkTime);
+    props.inputValueSet(inputWorkTime, inputBreakTime);
   }
+  //AppからinputValueSet渡ってきているOK
+  console.log(props);
 
   return (
     <>

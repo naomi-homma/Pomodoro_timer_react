@@ -42,7 +42,7 @@ const UserInputComponent = ({
   handleInputBreakTime, inputBreakTime,
   handleInputLongBreakTime, inputLongBreakTime,
   handleInputCycleCount, inputCycleCount,
-  inputValueSet
+  callInputValueSet
 }) => {
   const classes = useStyles();
   return (
@@ -71,7 +71,7 @@ const UserInputComponent = ({
       </StyledInputField>
       <StyledButton variant="contained"
         type="submit"
-        onClick={inputValueSet}
+        onClick={callInputValueSet}
       >OK</StyledButton>
     </form>
   );
