@@ -5,7 +5,7 @@ import reset from 'styled-reset-advanced';
 import Header from './components/Header';
 import CountdownContainer from './containers/Countdown';
 import UserInputContainer from './containers/UserInput';
-import InputTimeDesplay from './components/InputTimeDesplay';
+import InputTimeDisplay from './components/InputTimeDisplay';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -16,11 +16,15 @@ const App = () => {
   const[workTime, setWorkTime] = useState(25);
   const[breakTime, setBreakTime] = useState(0.3);
   const[longBreakTime, setLongBreakTime] = useState(20);
-
-  const inputValueSet = (inputWorkTime) => {
-    setWorkTime(inputWorkTime);
-  }
   
+
+  const inputValueSet = (inputWorkTime, inputBreakTime) => {
+    setWorkTime(inputWorkTime);
+    setBreakTime(inputBreakTime);
+    console.log('呼ばれた！');
+  }
+  console.log(workTime);
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -28,9 +32,13 @@ const App = () => {
       <div className="module-spacer" />
       <CountdownContainer
         workTime={workTime}
+        breakTime={breakTime}
       />
       <div className="module-spacer" />
-      <InputTimeDesplay />
+      <InputTimeDisplay
+      workTime={workTime}
+      breakTime={breakTime}
+      />
       <div className="module-spacer" />
       <UserInputContainer 
         inputValueSet={inputValueSet}

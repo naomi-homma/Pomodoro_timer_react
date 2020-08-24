@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
 
-const useCountdown = (props) => {
+const CountdownContainer = (props) => {
   //各時間の値はAppで管理する
   // const[workTime, setWorkTime] = useState(25);
   const[breakTime, setBreakTime] = useState(0.3);
@@ -32,6 +32,8 @@ const useCountdown = (props) => {
       console.log(cycleCount); 
     } 
   }
+  console.log(props.workTime);
+  console.log(leftSec);
 
   const handleStart = () => {
     console.log('start click!')
@@ -73,14 +75,13 @@ const useCountdown = (props) => {
     return () => clearTimeout(timerObj);
   },[active, leftSec])
 
-  return[[props.workTime, leftSec, active], [handleStart, handleStop, handleReset]];
-}
+  useEffect(() => {
+    setLeftSec(props.workTime*60);
+  }, [props.workTime])
 
-
-const CountdownContainer = () => {
-  const[[workTime, leftSec, active], [handleStart, handleStop, handleReset]] = useCountdown(25*60);
   return (
     <CountdownComponent
+      workTime={props.workTime}
       leftSec={leftSec}
       active={active}
       handleStart={handleStart}
