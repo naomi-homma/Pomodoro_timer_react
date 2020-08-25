@@ -14,16 +14,17 @@ const GlobalStyle = createGlobalStyle`
 //InputTimeDesplayはcomponentから直接(ロジック切り出していない)
 const App = () => {
   const[workTime, setWorkTime] = useState(25);
-  const[breakTime, setBreakTime] = useState(0.3);
+  const[breakTime, setBreakTime] = useState(5);
   const[longBreakTime, setLongBreakTime] = useState(20);
+  const[cycleCount, setCycleCount] = useState(1);
   
-
-  const inputValueSet = (inputWorkTime, inputBreakTime) => {
+  const inputValueSet = (inputWorkTime, inputBreakTime, inputLongBreakTime, inputCycleCount) => {
     setWorkTime(inputWorkTime);
     setBreakTime(inputBreakTime);
+    setLongBreakTime(inputLongBreakTime);
+    setCycleCount(inputCycleCount);
     console.log('呼ばれた！');
   }
-  console.log(workTime);
 
   return (
     <div className="App">
@@ -33,15 +34,23 @@ const App = () => {
       <CountdownContainer
         workTime={workTime}
         breakTime={breakTime}
+        longBreakTime={longBreakTime}
+        cycleCount={cycleCount}
       />
       <div className="module-spacer" />
       <InputTimeDisplay
-      workTime={workTime}
-      breakTime={breakTime}
+        workTime={workTime}
+        breakTime={breakTime}
+        longBreakTime={longBreakTime}
+        cycleCount={cycleCount}
       />
       <div className="module-spacer" />
       <UserInputContainer 
         inputValueSet={inputValueSet}
+        workTime={workTime}
+        breakTime={breakTime}
+        longBreakTime={longBreakTime}
+        cycleCount={cycleCount}
       />
     </div>
   );

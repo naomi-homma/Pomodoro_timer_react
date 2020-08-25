@@ -1,5 +1,5 @@
 //見た目担当
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -9,10 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      // width: '120px',
       fontSize: '1.2rem',
-      // display: 'block',
-      // margin: '0 auto'
     },
   },
 }));

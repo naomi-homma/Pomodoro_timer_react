@@ -1,5 +1,5 @@
 //View担当：設定されている各時間を表示するcomponents
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -44,17 +44,6 @@ const StyledTableContainer = styled(TableContainer)`
     margin: 0 auto;
 `;
 
-function createData(name, times_cycles) {
-  return { name, times_cycles };
-}
-
-const rows = [
-  createData('作業時間', 25),
-  createData('休憩時間', 5),
-  createData('長休憩時間', 20),
-  createData('長休憩までの作業時間', 4)
-];
-
 const useStyles = makeStyles({
   table: {
     maxWidth: 350,
@@ -62,8 +51,32 @@ const useStyles = makeStyles({
   },
 });
 
-const InputTimeDesplay = () => {
+const InputTimeDesplay = (props) => {
+  const[displayWorkTime, setDisplayWorkTime] = useState(25);
+  const[displayBreakTime, setDisplayBreakTime] = useState(5);
+  const[displayLongBreakTime, setDisplayLongBreakTime] = useState(20);
+  const[displayCycleCount, setDisplayCycleCount] = useState(props.cycleCount);
   const classes = useStyles();
+
+  console.log(props.cycleCount)
+function createData(name, times_cycles) {
+  return { name, times_cycles };
+}
+
+const rows = [
+  createData('作業時間', displayWorkTime),
+  createData('休憩時間', displayBreakTime),
+  createData('長休憩時間', displayLongBreakTime),
+  createData('長休憩までの作業時間', displayCycleCount)
+];
+
+useEffect(() => {
+  setDisplayWorkTime(props.workTime);
+  setDisplayBreakTime(props.breakTime);
+  setDisplayLongBreakTime(props.longBreakTime);
+  setDisplayCycleCount(props.cycleCount);
+}, [props.workTime, props.breakTime, props.longBreakTime, props.cycleCount]);
+
   return (
     <StyledTableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
