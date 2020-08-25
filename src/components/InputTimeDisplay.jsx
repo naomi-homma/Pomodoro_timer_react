@@ -53,6 +53,9 @@ const useStyles = makeStyles({
 
 const InputTimeDesplay = (props) => {
   const[displayWorkTime, setDisplayWorkTime] = useState(25);
+  const[displayBreakTime, setDisplayBreakTime] = useState(5);
+  const[displayLongBreakTime, setDisplayLongBreakTime] = useState(20);
+  const[displayCycleCount, setDisplayCycleCount] = useState(4);
   const classes = useStyles();
 
 function createData(name, times_cycles) {
@@ -61,14 +64,17 @@ function createData(name, times_cycles) {
 
 const rows = [
   createData('作業時間', displayWorkTime),
-  createData('休憩時間', 5),
-  createData('長休憩時間', 20),
-  createData('長休憩までの作業時間', 4)
+  createData('休憩時間', displayBreakTime),
+  createData('長休憩時間', displayLongBreakTime),
+  createData('長休憩までの作業時間', displayCycleCount)
 ];
 
 useEffect(() => {
   setDisplayWorkTime(props.workTime);
-}, [props.workTime]);
+  setDisplayBreakTime(props.breakTime);
+  setDisplayLongBreakTime(props.longBreakTime);
+  setDisplayCycleCount(props.cycleCount);
+}, [props.workTime, props.breakTime, props.longBreakTime, props.cycleCount]);
 
   return (
     <StyledTableContainer component={Paper}>

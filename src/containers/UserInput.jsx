@@ -26,13 +26,10 @@ const UserInputContainer = (props) => {
     console.log(e.target.value);
   }
 
-  //クリックしたら値がセットされる...ようにしたい
   const callInputValueSet = (e) => {
     e.preventDefault();
-    props.inputValueSet(inputWorkTime, inputBreakTime);
+    props.inputValueSet(inputWorkTime, inputBreakTime, inputLongBreakTime, inputCycleCount);
   }
-  //AppからinputValueSet渡ってきているOK
-  console.log(props);
 
   return (
     <>

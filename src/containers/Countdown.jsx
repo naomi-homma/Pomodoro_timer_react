@@ -5,35 +5,29 @@ import CountdownComponent from '../components/Countdown';
 
 const CountdownContainer = (props) => {
   //各時間の値はAppで管理する
-  // const[workTime, setWorkTime] = useState(25);
-  const[breakTime, setBreakTime] = useState(0.3);
-  const[longBreakTime, setLongBreakTime] = useState(20);
   const[timerState, setTimerState] = useState('work');
-  const[cycleCount, setCycleCount] = useState(1);
   const[active, setActive] = useState(false);
   let[leftSec, setLeftSec] = useState(props.workTime*60);
+  let[leftCycle, setLeftCycle] = useState(props.cycleCount);
   let[timerObj, setTimerObj] = useState('');
 
   const handleSwitch = () => {
     //3回目のworkが終了したらlongbreakに入る
     //longbreakまでの作業時間
-    if( timerState === 'work' && cycleCount === 3 ) {
-      setLeftSec(longBreakTime*60);
+    if( timerState === 'work' && leftCycle === props.cycleCount ) {
+      setLeftSec(props.longBreakTime*60);
       setTimerState('longBreak');
-      setCycleCount(1);
+      setLeftCycle(1);
     } else if (timerState === 'work') {
-      setLeftSec(breakTime*60);
+      setLeftSec(props.breakTime*60);
       setTimerState('break');
       console.log('handleSwitchのwork');
     } else if ( timerState === 'break' ) {
       setLeftSec(props.workTime*60);
       setTimerState('work');
-      setCycleCount(c => c + 1);
-      console.log(cycleCount); 
+      setLeftCycle(c => c + 1);
     } 
   }
-  console.log(props.workTime);
-  console.log(leftSec);
 
   const handleStart = () => {
     console.log('start click!')
@@ -50,9 +44,9 @@ const CountdownContainer = (props) => {
     switch (timerState) {
       case "work": setLeftSec(props.workTime);
         break;
-      case "break": setLeftSec(breakTime);
+      case "break": setLeftSec(props.breakTime);
         break;
-      case "longBreak": setLeftSec(longBreakTime);
+      case "longBreak": setLeftSec(props.longBreakTime);
         break;
     }
   };
@@ -66,8 +60,6 @@ const CountdownContainer = (props) => {
       )
     } else if ( active && leftSec <= 0 ) {
       clearTimeout(timerObj);
-      console.log(leftSec);
-      console.log(timerState);
       handleSwitch();
     } else {
       clearTimeout(timerObj);
