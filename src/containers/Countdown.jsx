@@ -8,16 +8,16 @@ const CountdownContainer = (props) => {
   const[timerState, setTimerState] = useState('work');
   const[active, setActive] = useState(false);
   let[leftSec, setLeftSec] = useState(props.workTime*60);
-  let[leftCycle, setLeftCycle] = useState(props.cycleCount);
+  let[leftCycleCount, setLeftCycleCount] = useState(props.cycleCount);
   let[timerObj, setTimerObj] = useState('');
 
   const handleSwitch = () => {
     //3回目のworkが終了したらlongbreakに入る
     //longbreakまでの作業時間
-    if( timerState === 'work' && leftCycle === props.cycleCount ) {
+    if( timerState === 'work' && leftCycleCount === props.cycleCount ) {
       setLeftSec(props.longBreakTime*60);
       setTimerState('longBreak');
-      setLeftCycle(1);
+      setLeftCycleCount(1);
     } else if (timerState === 'work') {
       setLeftSec(props.breakTime*60);
       setTimerState('break');
@@ -25,7 +25,7 @@ const CountdownContainer = (props) => {
     } else if ( timerState === 'break' ) {
       setLeftSec(props.workTime*60);
       setTimerState('work');
-      setLeftCycle(c => c + 1);
+      setLeftCycleCount(c => c + 1);
     } 
   }
 
