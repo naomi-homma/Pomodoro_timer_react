@@ -24,9 +24,6 @@ const StyledButton = styled(Button)`
 `;
 
 const CountdownComponent = ({workTime, leftSec, handleStart, handleStop, handleReset, active}) => {
-  // const classes = useStyles();
-  // console.log(leftSec);
-  // console.log(handleStart);
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>

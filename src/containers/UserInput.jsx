@@ -27,7 +27,6 @@ const UserInputContainer = (props) => {
   }
 
   //クリックしたら値がセットされる...ようにしたい
-  //
   const callInputValueSet = (e) => {
     e.preventDefault();
     props.inputValueSet(inputWorkTime, inputBreakTime);
