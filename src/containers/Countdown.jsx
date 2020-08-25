@@ -32,6 +32,7 @@ const CountdownContainer = (props) => {
   const handleStart = () => {
     console.log('start click!')
     setActive(true);
+    
   };
 
   const handleStop = () => {

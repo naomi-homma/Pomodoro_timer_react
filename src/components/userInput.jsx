@@ -9,10 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      // width: '120px',
       fontSize: '1.2rem',
-      // display: 'block',
-      // margin: '0 auto'
     },
   },
 }));

@@ -55,9 +55,10 @@ const InputTimeDesplay = (props) => {
   const[displayWorkTime, setDisplayWorkTime] = useState(25);
   const[displayBreakTime, setDisplayBreakTime] = useState(5);
   const[displayLongBreakTime, setDisplayLongBreakTime] = useState(20);
-  const[displayCycleCount, setDisplayCycleCount] = useState(4);
+  const[displayCycleCount, setDisplayCycleCount] = useState(props.cycleCount);
   const classes = useStyles();
 
+  console.log(props.cycleCount)
 function createData(name, times_cycles) {
   return { name, times_cycles };
 }

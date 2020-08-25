@@ -4,12 +4,6 @@ import {secToMMSS} from '../lib/time';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//       margin: theme.spacing(1),
-//   },
-// }));
-
 const StyledTimeDesplay = styled.div`
   color: #282c34;
   font-size: 100px;
@@ -23,7 +17,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const CountdownComponent = ({workTime, leftSec, handleStart, handleStop, handleReset, active}) => {
+const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, active}) => {
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>
