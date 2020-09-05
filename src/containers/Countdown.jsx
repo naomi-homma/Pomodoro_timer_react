@@ -5,7 +5,6 @@ import CountdownComponent from '../components/Countdown';
 
 const CountdownContainer = (props) => {
   //作業時間など各時間(inputで入力した値も含めて)の値はAppで管理する
-
   //①stateの種類が多い。まとめられる？無駄なstateを設定していないか？
   //②stateの初期値をpropsで設定しても問題ないか？
   const[timerState, setTimerState] = useState('work');
@@ -13,7 +12,7 @@ const CountdownContainer = (props) => {
   //③buttonStateの値としてオブジェクトを代入。この形は問題ないか？スマートな書き方ある？
   const[buttonState, setButtonState] = useState({start: false, stop: true, reset: true})
   let[leftSec, setLeftSec] = useState(props.workTime*60);
-  let[leftCycleCount, setLeftCycleCount] = useState(props.cycleCount);
+  let[leftCycleCount, setLeftCycleCount] = useState(1);
   let[timerObj, setTimerObj] = useState('');
 
   const handleSwitch = () => {
@@ -35,8 +34,8 @@ const CountdownContainer = (props) => {
 
   const handleStart = () => {
     setRunning(true);
-    //④buttonのdisabledの値を指定。更新の書き方もっとスマートな方法ある？
-    setButtonState({start: true, stop: false, reset: false});
+    //④buttonのdisabledの値を指定。更新の書き方は正しい？
+    setButtonState({start: true, stop: false, reset: true});
   };
 
   const handleStop = () => {
@@ -78,8 +77,8 @@ const CountdownContainer = (props) => {
 
   return (
     <CountdownComponent
-      workTime={props.workTime}
       leftSec={leftSec}
+      timerState={timerState}
       buttonState={buttonState}
       handleStart={handleStart}
       handleStop={handleStop}
