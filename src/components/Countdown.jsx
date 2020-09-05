@@ -17,15 +17,15 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, active}) => {
+const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, buttonState}) => {
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>
       <div className="module-spacer" />
       <div>
-       <StyledButton variant="contained" onClick={handleStart} disabled={active}>START</StyledButton>
-       <StyledButton variant="contained" onClick={handleStop} disabled={!active}>STOP</StyledButton>
-       <StyledButton variant="contained" onClick={handleReset} disabled={!active}>RESET</StyledButton>
+       <StyledButton variant="contained" onClick={handleStart} disabled={buttonState.start}>START</StyledButton>
+       <StyledButton variant="contained" onClick={handleStop} disabled={buttonState.stop}>STOP</StyledButton>
+       <StyledButton variant="contained" onClick={handleReset} disabled={buttonState.reset}>RESET</StyledButton>
       </div>
     </>
   );
