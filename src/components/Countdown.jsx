@@ -23,7 +23,6 @@ const StyledTypography = styled(Typography)`
     font-size: 2.5rem;
   }
 `
-
 //timerとbuttonはcomponentで分けたい気持ち
 const CountdownComponent = ({leftSec, timerState, buttonState, handleStart, handleStop, handleReset}) => {
   return (
