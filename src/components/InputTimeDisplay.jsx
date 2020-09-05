@@ -15,13 +15,14 @@ import styled from 'styled-components';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
+    fontSize: '1rem',
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
     borderRight:'2px solid #ccc',
     lineHeight: '1rem'
   },
   body: {
-    fontSize: 14,
+    fontSize: '1rem',
     borderRight:'2px solid #aaa',
     lineHeight: '1rem'
   },
@@ -52,9 +53,9 @@ const useStyles = makeStyles({
 });
 
 const InputTimeDesplay = (props) => {
-  const[displayWorkTime, setDisplayWorkTime] = useState(25);
-  const[displayBreakTime, setDisplayBreakTime] = useState(5);
-  const[displayLongBreakTime, setDisplayLongBreakTime] = useState(20);
+  const[displayWorkTime, setDisplayWorkTime] = useState(props.workTime);
+  const[displayBreakTime, setDisplayBreakTime] = useState(props.breakTime);
+  const[displayLongBreakTime, setDisplayLongBreakTime] = useState(props.longBreakTime);
   const[displayCycleCount, setDisplayCycleCount] = useState(props.cycleCount);
   const classes = useStyles();
 
@@ -67,7 +68,7 @@ const rows = [
   createData('作業時間', displayWorkTime),
   createData('休憩時間', displayBreakTime),
   createData('長休憩時間', displayLongBreakTime),
-  createData('長休憩までの作業時間', displayCycleCount)
+  createData('長休憩までの作業回数', displayCycleCount)
 ];
 
 useEffect(() => {

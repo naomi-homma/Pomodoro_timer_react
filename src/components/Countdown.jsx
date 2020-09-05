@@ -2,6 +2,7 @@
 import React from 'react';
 import {secToMMSS} from '../lib/time';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 const StyledTimeDesplay = styled.div`
@@ -17,15 +18,25 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const CountdownComponent = ({leftSec, handleStart, handleStop, handleReset, active}) => {
+const StyledTypography = styled(Typography)`
+  &.MuiTypography-body1 {
+    font-size: 2.5rem;
+  }
+`
+
+//timerとbuttonはcomponentで分けたい気持ち
+const CountdownComponent = ({leftSec, timerState, buttonState, handleStart, handleStop, handleReset}) => {
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>
+      <StyledTypography variant="body1">
+        {timerState}
+      </StyledTypography>
       <div className="module-spacer" />
       <div>
-       <StyledButton variant="contained" onClick={handleStart} disabled={active}>START</StyledButton>
-       <StyledButton variant="contained" onClick={handleStop} disabled={!active}>STOP</StyledButton>
-       <StyledButton variant="contained" onClick={handleReset} disabled={!active}>RESET</StyledButton>
+       <StyledButton variant="contained" onClick={handleStart} disabled={buttonState.start}>START</StyledButton>
+       <StyledButton variant="contained" onClick={handleStop} disabled={buttonState.stop}>STOP</StyledButton>
+       <StyledButton variant="contained" onClick={handleReset} disabled={buttonState.reset}>RESET</StyledButton>
       </div>
     </>
   );
