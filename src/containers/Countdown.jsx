@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
 
+
 const CountdownContainer = (props) => {
   //作業時間など各時間(inputで入力した値も含めて)の値はAppで管理する
   //①stateの種類が多い。まとめられる？無駄なstateを設定していないか？
@@ -15,6 +16,9 @@ const CountdownContainer = (props) => {
   let[leftCycleCount, setLeftCycleCount] = useState(1);
   let[timerObj, setTimerObj] = useState('');
 
+  // 効果音再生
+  const audio = new Audio();
+
   const handleSwitch = () => {
     //3回目のworkが終了したらlongbreakに入る
     if( timerState === 'work' && leftCycleCount === props.cycleCount ) {
@@ -24,7 +28,15 @@ const CountdownContainer = (props) => {
     } else if (timerState === 'work') {
       setLeftSec(props.breakTime*60);
       setTimerState('break');
-      console.log('handleSwitchのwork');
+      audio.src = "../asse";
+      const playPromise = audio.play();
+        if(playPromise !== undefined) {
+          playPromise.then(_ => {
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        }
     } else if ( timerState === 'break' ) {
       setLeftSec(props.workTime*60);
       setTimerState('work');

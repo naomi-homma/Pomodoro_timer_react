@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
 //InputTimeDesplayはcomponentから直接(ロジック切り出していない)
 const App = () => {
+  //
   const[workTime, setWorkTime] = useState(0.1);
   const[breakTime, setBreakTime] = useState(0.2);
   const[longBreakTime, setLongBreakTime] = useState(2);
@@ -30,21 +31,21 @@ const App = () => {
     <div className="App">
       <GlobalStyle />
       <Header />
-      <div className="module-spacer" />
+      <div className="module_spacer_medium" />
       <CountdownContainer
         workTime={workTime}
         breakTime={breakTime}
         longBreakTime={longBreakTime}
         cycleCount={cycleCount}
       />
-      <div className="module-spacer" />
+      <div className="module_spacer_medium" />
       <InputTimeDisplay
         workTime={workTime}
         breakTime={breakTime}
         longBreakTime={longBreakTime}
         cycleCount={cycleCount}
       />
-      <div className="module-spacer" />
+      <div className="module_spacer_medium" />
       <UserInputContainer 
         inputValueSet={inputValueSet}
         workTime={workTime}
