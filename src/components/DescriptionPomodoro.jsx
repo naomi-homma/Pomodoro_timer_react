@@ -2,7 +2,6 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {makeStyles, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import styled from 'styled-components';
 
 const theme = createMuiTheme({
   typography: {
@@ -21,6 +20,9 @@ const useStyles = makeStyles(() =>
       descriptionFeild: {
         width: 400,
         margin: "0 auto",
+        border: "solid 2px #bbb",
+        borderRadius: 3,
+        padding: 15,
       },
       descriptionText: {
         textAlign: "left"
