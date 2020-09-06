@@ -2,7 +2,11 @@
   text-align: center;
 }
 
-.module-spacer {
+.module_spacer_small {
+  height: 10px
+}
+
+.module_spacer_medium {
   height: 20px
 }
 

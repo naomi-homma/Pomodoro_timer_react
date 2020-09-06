@@ -31,7 +31,7 @@ const CountdownComponent = ({leftSec, timerState, buttonState, handleStart, hand
       <StyledTypography variant="body1">
         {timerState}
       </StyledTypography>
-      <div className="module-spacer" />
+      <div className="module_spacer_medium" />
       <div>
        <StyledButton variant="contained" onClick={handleStart} disabled={buttonState.start}>START</StyledButton>
        <StyledButton variant="contained" onClick={handleStop} disabled={buttonState.stop}>STOP</StyledButton>
