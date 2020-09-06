@@ -13,7 +13,7 @@ const CountdownContainer = (props) => {
   //③buttonStateの値としてオブジェクトを代入。この形は問題ないか？スマートな書き方ある？
   const[buttonState, setButtonState] = useState({start: false, stop: true, reset: true})
   let[leftSec, setLeftSec] = useState(props.workTime*60);
-  let[leftCycleCount, setLeftCycleCount] = useState(1);
+  let[worksCount, setWorksCount] = useState(1);
   let[timerObj, setTimerObj] = useState('');
 
   // 効果音再生
@@ -21,10 +21,9 @@ const CountdownContainer = (props) => {
 
   const handleSwitch = () => {
     //3回目のworkが終了したらlongbreakに入る
-    if( timerState === 'work' && leftCycleCount === props.cycleCount ) {
+    if( timerState === 'work' && worksCount === props.cycleCount ) {
       setLeftSec(props.longBreakTime*60);
       setTimerState('longBreak');
-      setLeftCycleCount(1);
     } else if (timerState === 'work') {
       setLeftSec(props.breakTime*60);
       setTimerState('break');
@@ -40,7 +39,11 @@ const CountdownContainer = (props) => {
     } else if ( timerState === 'break' ) {
       setLeftSec(props.workTime*60);
       setTimerState('work');
-      setLeftCycleCount(c => c + 1);
+      setWorksCount(c => c + 1);
+    } else if ( timerState === 'longBreak' ) {
+      setLeftSec(props.workTime*60);
+      setTimerState('work');
+      setWorksCount(1);
     } 
   }
 
@@ -58,11 +61,11 @@ const CountdownContainer = (props) => {
   const handleReset = () => {
     setButtonState({start: false, stop: true, reset: true});
     switch (timerState) {
-      case "work": setLeftSec(props.workTime);
+      case "work": setLeftSec(props.workTime*60);
         break;
-      case "break": setLeftSec(props.breakTime);
+      case "break": setLeftSec(props.breakTime*60);
         break;
-      case "longBreak": setLeftSec(props.longBreakTime);
+      case "longBreak": setLeftSec(props.longBreakTime*60);
         break;
     }
   };
@@ -91,6 +94,8 @@ const CountdownContainer = (props) => {
     <CountdownComponent
       leftSec={leftSec}
       timerState={timerState}
+      worksCount={worksCount}
+      cycleCount={props.cycleCount}
       buttonState={buttonState}
       handleStart={handleStart}
       handleStop={handleStop}
