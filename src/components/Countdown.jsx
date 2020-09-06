@@ -22,14 +22,20 @@ const StyledTypography = styled(Typography)`
   &.MuiTypography-body1 {
     font-size: 2.5rem;
   }
+  &.MuiTypography-body2 {
+    font-size: 1.5rem;
+  }
 `
 //timerとbuttonはcomponentで分けたい気持ち
-const CountdownComponent = ({leftSec, timerState, buttonState, handleStart, handleStop, handleReset}) => {
+const CountdownComponent = ({leftSec, timerState, worksCount, cycleCount, buttonState, handleStart, handleStop, handleReset}) => {
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>
       <StyledTypography variant="body1">
         {timerState}
+      </StyledTypography>
+      <StyledTypography variant="body2">
+        {worksCount}/{cycleCount}
       </StyledTypography>
       <div className="module_spacer_medium" />
       <div>
