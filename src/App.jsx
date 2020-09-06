@@ -6,6 +6,7 @@ import Header from './components/Header';
 import CountdownContainer from './containers/Countdown';
 import UserInputContainer from './containers/UserInput';
 import InputTimeDisplay from './components/InputTimeDisplay';
+import DescriptionPomodoro from './components/DescriptionPomodoro';
 
 //reset css
 const GlobalStyle = createGlobalStyle`
@@ -53,6 +54,10 @@ const App = () => {
         longBreakTime={longBreakTime}
         cycleCount={cycleCount}
       />
+      <div className="module_spacer_medium" />
+      <div className="module_spacer_medium" />
+      <DescriptionPomodoro />
+      <div className="module_spacer_medium" />
     </div>
   );
 }
