@@ -61,21 +61,25 @@ const UserInputComponent = ({
             onChange={handleInputWorkTime} 
             value={inputWorkTime} 
             label="作業時間"
+            type="number"
           />
           <StyledTextField id="standard-basic"
             onChange={handleInputBreakTime} 
             value={inputBreakTime}
             label="小休憩時間"
+            type="number"
           />
           <StyledTextField id="standard-basic"
             onChange={handleInputLongBreakTime} 
             value={inputLongBreakTime}
             label="長休憩時間"
+            type="number"
           />
           <StyledTextField id="standard-basic"
             onChange={handleInputCycleCount} 
             value={inputCycleCount}
             label="長休憩までの作業回数"
+            type="number"
           />
         </StyledInputField>
         <StyledButton variant="contained"

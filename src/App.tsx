@@ -15,13 +15,12 @@ const GlobalStyle = createGlobalStyle`
 
 //InputTimeDesplayはcomponentから直接(ロジック切り出していない)
 const App = () => {
-  //
-  const[workTime, setWorkTime] = useState(25);
-  const[breakTime, setBreakTime] = useState(5);
-  const[longBreakTime, setLongBreakTime] = useState(20);
-  const[cycleCount, setCycleCount] = useState(4);
+  const[workTime, setWorkTime] = useState<number>(25);
+  const[breakTime, setBreakTime] = useState<number>(5);
+  const[longBreakTime, setLongBreakTime] = useState<number>(20);
+  const[cycleCount, setCycleCount] = useState<number>(4);
   
-  const inputValueSet = (inputWorkTime, inputBreakTime, inputLongBreakTime, inputCycleCount) => {
+  const inputValueSet = (inputWorkTime: number, inputBreakTime: number, inputLongBreakTime: number, inputCycleCount: number) => {
     setWorkTime(inputWorkTime);
     setBreakTime(inputBreakTime);
     setLongBreakTime(inputLongBreakTime);
