@@ -3,12 +3,11 @@ import React, {useState} from 'react';
 import UserInputComponent from '../components/userInput';
 
 type Props = {
-  //
-  inputValueSet: (inputWorkTime: number, inputBreakTime: number, inputLongBreakTime: number, inputCycleCount: number) => void;
-  workTime: number;
-  breakTime: number;
-  longBreakTime: number;
-  cycleCount: number;
+  inputValueSet: (inputWorkTime: number, inputBreakTime: number, inputLongBreakTime: number, inputCycleCount: number) => void,
+  workTime: number,
+  breakTime: number,
+  longBreakTime: number,
+  cycleCount: number,
 };
 
 const UserInputContainer = (props: Props) => {
@@ -18,19 +17,19 @@ const UserInputContainer = (props: Props) => {
   const[inputCycleCount, setInputCycleCount] = useState<number>(props.cycleCount);
 
   const handleInputWorkTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputWorkTime(Number(e.currentTarget.value));
+    setInputWorkTime(Number(e.target.value));
   }
 
   const handleInputBreakTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputBreakTime(Number(e.currentTarget.value));
+    setInputBreakTime(Number(e.target.value));
   }
 
   const handleInputLongBreakTime = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputLongBreakTime(Number(e.currentTarget.value));
+    setInputLongBreakTime(Number(e.target.value));
   }
   
   const handleInputCycleCount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputCycleCount(Number(e.currentTarget.value));
+    setInputCycleCount(Number(e.target.value));
   }
 
   const callInputValueSet = (e: React.FormEvent<HTMLInputElement>) => {
