@@ -32,7 +32,7 @@ const UserInputContainer = (props: Props) => {
     setInputCycleCount(Number(e.target.value));
   }
 
-  const callInputValueSet = (e: React.FormEvent<HTMLInputElement>) => {
+  const callInputValueSet = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     props.inputValueSet(inputWorkTime, inputBreakTime, inputLongBreakTime, inputCycleCount);
   }

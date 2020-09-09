@@ -41,13 +41,19 @@ const StyledButton = styled(Button)`
   width: 100px;
 `;
 
-const UserInputComponent = ({
-  handleInputWorkTime, inputWorkTime,
-  handleInputBreakTime, inputBreakTime,
-  handleInputLongBreakTime, inputLongBreakTime,
-  handleInputCycleCount, inputCycleCount,
-  callInputValueSet
-}) => {
+type Props = {
+  handleInputWorkTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
+  inputWorkTime: number,
+  handleInputBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
+  inputBreakTime: number,
+  handleInputLongBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
+  inputLongBreakTime: number,
+  handleInputCycleCount: (e: React.ChangeEvent<HTMLInputElement>) => void, 
+  inputCycleCount: number,
+  callInputValueSet: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+};
+
+const UserInputComponent = (props: Props) => {
   const classes = useStyles();
   return (
     <>
@@ -58,33 +64,33 @@ const UserInputComponent = ({
       <form className={classes.root} noValidate autoComplete="off">
         <StyledInputField>
           <StyledTextField id="standard-basic" 
-            onChange={handleInputWorkTime} 
-            value={inputWorkTime} 
+            onChange={props.handleInputWorkTime} 
+            value={props.inputWorkTime} 
             label="作業時間"
             type="number"
           />
           <StyledTextField id="standard-basic"
-            onChange={handleInputBreakTime} 
-            value={inputBreakTime}
+            onChange={props.handleInputBreakTime} 
+            value={props.inputBreakTime}
             label="小休憩時間"
             type="number"
           />
           <StyledTextField id="standard-basic"
-            onChange={handleInputLongBreakTime} 
-            value={inputLongBreakTime}
+            onChange={props.handleInputLongBreakTime} 
+            value={props.inputLongBreakTime}
             label="長休憩時間"
             type="number"
           />
           <StyledTextField id="standard-basic"
-            onChange={handleInputCycleCount} 
-            value={inputCycleCount}
+            onChange={props.handleInputCycleCount} 
+            value={props.inputCycleCount}
             label="長休憩までの作業回数"
             type="number"
           />
         </StyledInputField>
         <StyledButton variant="contained"
           type="submit"
-          onClick={callInputValueSet}
+          onClick={props.callInputValueSet}
         >OK</StyledButton>
       </form>
     </>
