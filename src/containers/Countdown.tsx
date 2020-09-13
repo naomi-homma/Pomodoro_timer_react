@@ -3,24 +3,25 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
 
+type Props = {
+  workTime: number,
+  breakTime: number,
+  longBreakTime: number,
+  cycleCount: number,
+}
 
-const CountdownContainer = (props) => {
-  //作業時間など各時間(inputで入力した値も含めて)の値はAppで管理する
-  //①stateの種類が多い。まとめられる？無駄なstateを設定していないか？
-  //②stateの初期値をpropsで設定しても問題ないか？
-  const[timerState, setTimerState] = useState('work');
-  const[running, setRunning] = useState(false);
-  //③buttonStateの値としてオブジェクトを代入。この形は問題ないか？スマートな書き方ある？
+const CountdownContainer = (props: Props) => {
+  const[timerState, setTimerState] = useState<string>('work');
+  const[running, setRunning] = useState<boolean>(false);
   const[buttonState, setButtonState] = useState({start: false, stop: true, reset: true})
-  let[leftSec, setLeftSec] = useState(props.workTime*60);
-  let[worksCount, setWorksCount] = useState(1);
-  let[timerObj, setTimerObj] = useState('');
+  let[leftSec, setLeftSec] = useState<number>(props.workTime*60);
+  let[worksCount, setWorksCount] = useState<number>(1);
+  let[timerObj, setTimerObj] = useState<number>();
 
   // 効果音再生
   const audio = new Audio();
 
   const handleSwitch = () => {
-    //3回目のworkが終了したらlongbreakに入る
     if( timerState === 'work' && worksCount === props.cycleCount ) {
       setLeftSec(props.longBreakTime*60);
       setTimerState('longBreak');
@@ -49,7 +50,6 @@ const CountdownContainer = (props) => {
 
   const handleStart = () => {
     setRunning(true);
-    //④buttonのdisabledの値を指定。更新の書き方は正しい？
     setButtonState({start: true, stop: false, reset: true});
   };
 
@@ -73,7 +73,7 @@ const CountdownContainer = (props) => {
   useEffect(() => {
     if( running && leftSec > 0 ) {
       setTimerObj(
-        setTimeout(() => {
+        window.setTimeout(() => {
           setLeftSec(prev => prev - 1);
         }, 1000)
       )
