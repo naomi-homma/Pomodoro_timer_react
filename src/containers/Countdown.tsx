@@ -34,8 +34,9 @@ const CountdownContainer = (props: Props) => {
     } else if (timerState === 'work') {
       setLeftSec(props.breakTime*60);
       setTimerState('break');
-      audio.src = "../asse";
+      audio.src = "https://naomi-homma.github.io/Pomodoro_timer_react/assets/audio/hatoclock.mp3#t=0,3.5";
       const playPromise = audio.play();
+      console.log('ここまで！')
         if(playPromise !== undefined) {
           playPromise.then(_ => {
           })
