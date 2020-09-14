@@ -10,10 +10,16 @@ type Props = {
   cycleCount: number,
 }
 
+type ButtonStateType = {
+  start: boolean,
+  stop: boolean,
+  reset: boolean
+}
+
 const CountdownContainer = (props: Props) => {
   const[timerState, setTimerState] = useState<string>('work');
   const[running, setRunning] = useState<boolean>(false);
-  const[buttonState, setButtonState] = useState({start: false, stop: true, reset: true})
+  const[buttonState, setButtonState] = useState<ButtonStateType>({start: false, stop: true, reset: true})
   let[leftSec, setLeftSec] = useState<number>(props.workTime*60);
   let[worksCount, setWorksCount] = useState<number>(1);
   let[timerObj, setTimerObj] = useState<number>();
@@ -28,8 +34,9 @@ const CountdownContainer = (props: Props) => {
     } else if (timerState === 'work') {
       setLeftSec(props.breakTime*60);
       setTimerState('break');
-      audio.src = "../asse";
+      audio.src = "https://naomi-homma.github.io/Pomodoro_timer_react/assets/audio/hatoclock.mp3#t=0,3.5";
       const playPromise = audio.play();
+      console.log('ここまで！')
         if(playPromise !== undefined) {
           playPromise.then(_ => {
           })
@@ -73,6 +80,7 @@ const CountdownContainer = (props: Props) => {
   useEffect(() => {
     if( running && leftSec > 0 ) {
       setTimerObj(
+        //window:明示的にブラウザのsetTimeout()を使うことを指示する
         window.setTimeout(() => {
           setLeftSec(prev => prev - 1);
         }, 1000)
