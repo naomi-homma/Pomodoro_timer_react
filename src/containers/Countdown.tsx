@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
+import hatoclock from '../assets/audio/hatoclock.mp3'
+import schoolChime from '../assets/audio/school-chime.mp3'
 
 type Props = {
   workTime: number,
@@ -29,14 +31,8 @@ const CountdownContainer = (props: Props) => {
 
   const handleSwitch = () => {
     if( timerState === 'work' && worksCount === props.cycleCount ) {
-      setLeftSec(props.longBreakTime*60);
-      setTimerState('longBreak');
-    } else if (timerState === 'work') {
-      setLeftSec(props.breakTime*60);
-      setTimerState('break');
-      audio.src = "https://naomi-homma.github.io/Pomodoro_timer_react/assets/audio/hatoclock.mp3#t=0,3.5";
+      audio.src = `${hatoclock}#t=0,3.5`;
       const playPromise = audio.play();
-      console.log('ここまで！')
         if(playPromise !== undefined) {
           playPromise.then(_ => {
           })
@@ -44,11 +40,43 @@ const CountdownContainer = (props: Props) => {
             console.log(error);
           });
         }
+      setLeftSec(props.longBreakTime*60);
+      setTimerState('longBreak');
+    } else if (timerState === 'work') {
+      audio.src = `${hatoclock}#t=0,3.5`;
+      const playPromise = audio.play();
+        if(playPromise !== undefined) {
+          playPromise.then(_ => {
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        }
+      setLeftSec(props.breakTime*60);
+      setTimerState('break');
     } else if ( timerState === 'break' ) {
+      audio.src = `${schoolChime}#t=0,10.5`;
+      const playPromise = audio.play();
+        if(playPromise !== undefined) {
+          playPromise.then(_ => {
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        }
       setLeftSec(props.workTime*60);
       setTimerState('work');
       setWorksCount(c => c + 1);
     } else if ( timerState === 'longBreak' ) {
+      audio.src = `${schoolChime}#t=0,10.5`;
+      const playPromise = audio.play();
+        if(playPromise !== undefined) {
+          playPromise.then(_ => {
+          })
+          .catch(error => {
+            console.log(error);
+          });
+        }
       setLeftSec(props.workTime*60);
       setTimerState('work');
       setWorksCount(1);
