@@ -24,10 +24,20 @@ const StyledTypography = styled(Typography)`
   }
   &.MuiTypography-body2 {
     font-size: 1.5rem;
-  }
-`
+  }`
+
+type Props = {
+  leftSec: number
+  timerState: string
+  worksCount: number
+  cycleCount: number
+  buttonState: { start: boolean, stop: boolean, reset: boolean }
+  handleStop: () => void
+  handleReset: () => void
+  handleStart: () => void
+}
 //timerとbuttonはcomponentで分けたい気持ち
-const CountdownComponent = ({leftSec, timerState, worksCount, cycleCount, buttonState, handleStart, handleStop, handleReset}) => {
+const CountdownComponent = ({leftSec, timerState, worksCount, cycleCount, buttonState, handleStart, handleStop, handleReset}: Props) => {
   return (
     <>
       <StyledTimeDesplay>{secToMMSS(leftSec)}</StyledTimeDesplay>

@@ -1,7 +1,7 @@
 //View担当：設定されている各時間を表示するcomponents
 import React, {useState, useEffect} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
+import Table from '@material-ui/core/Table/index';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -52,7 +52,13 @@ const useStyles = makeStyles({
   },
 });
 
-const InputTimeDesplay = (props) => {
+type Props = {
+  workTime: number
+  breakTime: number
+  longBreakTime: number
+  cycleCount: number
+}
+const InputTimeDesplay = (props: Props) => {
   const[displayWorkTime, setDisplayWorkTime] = useState(props.workTime);
   const[displayBreakTime, setDisplayBreakTime] = useState(props.breakTime);
   const[displayLongBreakTime, setDisplayLongBreakTime] = useState(props.longBreakTime);
@@ -60,7 +66,7 @@ const InputTimeDesplay = (props) => {
   const classes = useStyles();
 
   console.log(props.cycleCount)
-function createData(name, times_cycles) {
+function createData(name: string, times_cycles: number) {
   return { name, times_cycles };
 }
 
@@ -79,25 +85,27 @@ useEffect(() => {
 }, [props.workTime, props.breakTime, props.longBreakTime, props.cycleCount]);
 
   return (
-    <StyledTableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>設定</StyledTableCell>
-            <StyledTableCell align="right">時間(分)&nbsp;/&nbsp;回数</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.times_cycles}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
+    <StyledTableContainer>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>設定</StyledTableCell>
+              <StyledTableCell align="right">時間(分)&nbsp;/&nbsp;回数</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.times_cycles}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </StyledTableContainer>
   );
 }
