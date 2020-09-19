@@ -19,12 +19,12 @@ type ButtonStateType = {
 }
 
 const CountdownContainer = (props: Props) => {
-  const[timerState, setTimerState] = useState<string>('work');
-  const[running, setRunning] = useState<boolean>(false);
+  const[timerState, setTimerState] = useState('work');
+  const[running, setRunning] = useState(false);
   const[buttonState, setButtonState] = useState<ButtonStateType>({start: false, stop: true, reset: true})
-  let[leftSec, setLeftSec] = useState<number>(props.workTime*60);
-  let[worksCount, setWorksCount] = useState<number>(1);
-  let[timerObj, setTimerObj] = useState<number>();
+  let[leftSec, setLeftSec] = useState(props.workTime*60);
+  let[worksCount, setWorksCount] = useState(1);
+  let[timerObj, setTimerObj] = useState(0);
 
   // 効果音再生
   const audio = new Audio();
@@ -80,7 +80,7 @@ const CountdownContainer = (props: Props) => {
       setLeftSec(props.workTime*60);
       setTimerState('work');
       setWorksCount(1);
-    } 
+    }
   }
 
   const handleStart = () => {
@@ -117,7 +117,7 @@ const CountdownContainer = (props: Props) => {
       clearTimeout(timerObj);
       handleSwitch();
     } else {
-      clearTimeout(timerObj);
+      clearTimeout(timerObj); //FIXME timerObjなのにnumber型になっています
     }
     return () => clearTimeout(timerObj);
   },[running, leftSec])
