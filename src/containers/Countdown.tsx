@@ -1,5 +1,6 @@
-//containersはロジックを担当
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-use-before-define */
+// containersはロジックを担当
+import React, { useState, useEffect } from "react";
 import '../App.css';
 import CountdownComponent from '../components/Countdown';
 import hatoclock from '../assets/audio/hatoclock.mp3'
@@ -15,7 +16,7 @@ type Props = {
 type ButtonStateType = {
   start: boolean,
   stop: boolean,
-  reset: boolean
+  reset: boolean,
 }
 
 const CountdownContainer = (props: Props) => {
