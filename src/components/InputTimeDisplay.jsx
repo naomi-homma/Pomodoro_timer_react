@@ -73,10 +73,19 @@ const rows = [
 
 useEffect(() => {
   setDisplayWorkTime(props.workTime);
+}, [props.workTime]);
+
+useEffect(() => {
   setDisplayBreakTime(props.breakTime);
+},[props.breakTime]);
+
+useEffect(() => {
   setDisplayLongBreakTime(props.longBreakTime);
+},[props.longBreakTime]);
+
+useEffect(() => {
   setDisplayCycleCount(props.cycleCount);
-}, [props.workTime, props.breakTime, props.longBreakTime, props.cycleCount]);
+},[props.cycleCount]);
 
   return (
     <StyledTableContainer component={Paper}>
