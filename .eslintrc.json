@@ -1,17 +1,19 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
         "airbnb",
-        "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
         "prettier/@typescript-eslint",
-        "prettier/react"
+        "prettier/react",
+        "prettier",
+        "eslint:recommended",
+        "plugin:prettier/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -53,6 +55,13 @@
             "error",
             "always",
             { "markers": ["/ <reference"] }
+        ],
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "trailingComma": "es5"
+            }
         ]
     },
     "settings": {

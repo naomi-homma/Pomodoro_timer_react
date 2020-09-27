@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
-import React, { useState } from "react";
-import "./App.css";
-import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset-advanced";
-import Header from "./components/Header";
-import CountdownContainer from "./containers/Countdown";
-import UserInputContainer from "./containers/UserInput";
-import InputTimeDisplay from "./components/InputTimeDisplay";
-import DescriptionPomodoro from "./components/DescriptionPomodoro";
+import React, { useState } from 'react';
+import './App.css';
+import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset-advanced';
+import Header from './components/Header';
+import CountdownContainer from './containers/Countdown';
+import UserInputContainer from './containers/UserInput';
+import InputTimeDisplay from './components/InputTimeDisplay';
+import DescriptionPomodoro from './components/DescriptionPomodoro';
 
 // reset css
 const GlobalStyle = createGlobalStyle`
