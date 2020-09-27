@@ -1,45 +1,61 @@
-//ロジック担当:Viewではなくcomponentを返すcomponent
-import React, {useState} from 'react';
+// ロジック担当:Viewではなくcomponentを返すcomponent
+import React, { useState } from 'react';
 import UserInputComponent from '../components/userInput';
 
 type Props = {
-  inputValueSet: (inputWorkTime: number, inputBreakTime: number, inputLongBreakTime: number, inputCycleCount: number) => void,
-  workTime: number,
-  breakTime: number,
-  longBreakTime: number,
-  cycleCount: number,
+  inputValueSet: (
+    inputWorkTime: number,
+    inputBreakTime: number,
+    inputLongBreakTime: number,
+    inputCycleCount: number
+  ) => void;
+  workTime: number;
+  breakTime: number;
+  longBreakTime: number;
+  cycleCount: number;
 };
 
 const UserInputContainer = (props: Props) => {
-  const[inputWorkTime, setInputWorkTime] = useState<number>(props.workTime);
-  const[inputBreakTime, setInputBreakTime] = useState<number>(props.breakTime);
-  const[inputLongBreakTime, setInputLongBreakTime] = useState<number>(props.longBreakTime);
-  const[inputCycleCount, setInputCycleCount] = useState<number>(props.cycleCount);
+  const [inputWorkTime, setInputWorkTime] = useState<number>(props.workTime);
+  const [inputBreakTime, setInputBreakTime] = useState<number>(props.breakTime);
+  const [inputLongBreakTime, setInputLongBreakTime] = useState<number>(
+    props.longBreakTime
+  );
+  const [inputCycleCount, setInputCycleCount] = useState<number>(
+    props.cycleCount
+  );
 
   const handleInputWorkTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputWorkTime(Number(e.target.value));
-  }
+  };
 
   const handleInputBreakTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputBreakTime(Number(e.target.value));
-  }
+  };
 
   const handleInputLongBreakTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputLongBreakTime(Number(e.target.value));
-  }
-  
+  };
+
   const handleInputCycleCount = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputCycleCount(Number(e.target.value));
-  }
+  };
 
-  const callInputValueSet = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const callInputValueSet = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
-    props.inputValueSet(inputWorkTime, inputBreakTime, inputLongBreakTime, inputCycleCount);
-  }
+    props.inputValueSet(
+      inputWorkTime,
+      inputBreakTime,
+      inputLongBreakTime,
+      inputCycleCount
+    );
+  };
 
   return (
     <>
-      <UserInputComponent 
+      <UserInputComponent
         handleInputWorkTime={handleInputWorkTime}
         inputWorkTime={inputWorkTime}
         handleInputBreakTime={handleInputBreakTime}

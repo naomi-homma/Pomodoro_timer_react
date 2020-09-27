@@ -1,4 +1,4 @@
-//見た目担当
+// 見た目担当
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -19,15 +19,15 @@ const StyledTypography = styled(Typography)`
   &.MuiTypography-body1 {
     font-size: 1rem;
   }
-`
+`;
 
 const StyledInputField = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 
 const StyledTextField = styled(TextField)`
-  &.MuiFormControl-root{
+  &.MuiFormControl-root {
     width: 100px;
     margin-right: 20px;
     &.MuiInputLabel-formControl {
@@ -42,15 +42,17 @@ const StyledButton = styled(Button)`
 `;
 
 type Props = {
-  handleInputWorkTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
-  inputWorkTime: number,
-  handleInputBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
-  inputBreakTime: number,
-  handleInputLongBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void, 
-  inputLongBreakTime: number,
-  handleInputCycleCount: (e: React.ChangeEvent<HTMLInputElement>) => void, 
-  inputCycleCount: number,
-  callInputValueSet: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  handleInputWorkTime: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputWorkTime: number;
+  handleInputBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputBreakTime: number;
+  handleInputLongBreakTime: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputLongBreakTime: number;
+  handleInputCycleCount: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputCycleCount: number;
+  callInputValueSet: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 };
 
 const UserInputComponent = (props: Props) => {
@@ -63,35 +65,42 @@ const UserInputComponent = (props: Props) => {
       <div className="module_spacer_small" />
       <form className={classes.root} noValidate autoComplete="off">
         <StyledInputField>
-          <StyledTextField id="standard-basic" 
-            onChange={props.handleInputWorkTime} 
-            value={props.inputWorkTime} 
+          <StyledTextField
+            id="standard-basic"
+            onChange={props.handleInputWorkTime}
+            value={props.inputWorkTime}
             label="作業時間"
             type="number"
           />
-          <StyledTextField id="standard-basic"
-            onChange={props.handleInputBreakTime} 
+          <StyledTextField
+            id="standard-basic"
+            onChange={props.handleInputBreakTime}
             value={props.inputBreakTime}
             label="小休憩時間"
             type="number"
           />
-          <StyledTextField id="standard-basic"
-            onChange={props.handleInputLongBreakTime} 
+          <StyledTextField
+            id="standard-basic"
+            onChange={props.handleInputLongBreakTime}
             value={props.inputLongBreakTime}
             label="長休憩時間"
             type="number"
           />
-          <StyledTextField id="standard-basic"
-            onChange={props.handleInputCycleCount} 
+          <StyledTextField
+            id="standard-basic"
+            onChange={props.handleInputCycleCount}
             value={props.inputCycleCount}
             label="長休憩までの作業回数"
             type="number"
           />
         </StyledInputField>
-        <StyledButton variant="contained"
+        <StyledButton
+          variant="contained"
           type="submit"
           onClick={props.callInputValueSet}
-        >OK</StyledButton>
+        >
+          OK
+        </StyledButton>
       </form>
     </>
   );
